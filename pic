@@ -1,0 +1,19 @@
+echo "# Zigzag" >> README.md
+from torch import autocast
+from diffusers import StableDiffusionPipeline, LMSDiscreteScheduler
+
+pipe = StableDiffusionPipeline.from_pretrained(
+	"CompVis/stable-diffusion-v1-3-diffusers", 
+	use_auth_token=True
+)
+
+prompt = "a photo of an astronaut riding a horse on mars"
+with autocast("cuda"):
+    image = pipe(prompt)["sample"][0]  
+    
+image.save("astronaut_rides_horse.png")git init 
+git add README.md 
+git commit -m "first commit" 
+git branch -M main 
+git remote add origin https://github.com/Zigmanuir/Zigzag.git
+ git push - ты главный
